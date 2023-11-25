@@ -1,44 +1,51 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Site</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
+  <body class="bg-slate-100">
+    <div class="flex-column justify-space-around">
+      <header class="flex justify-between items-center p-5 bg-slate-200">
+        <h1>
+          <a class="text-4xl font-bold" href="/">Blog Site</a>
+        </h1>
+        <nav>
+          <!-- Conditionally render login or logout links -->
+          {{#if logged_in}}
+            <a
+              class="border border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800"
+              href="/profile"
+            >profile</a>
+            |
+            <button
+              class="border border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800"
+              id="logout"
+            >logout</button>
+          {{else}}
+            <a
+              class="border border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800"
+              href="/login"
+            >login</a>
+          {{/if}}
+        </nav>
+      </header>
+      <main class="w-8/12 mt-5 mx-auto">
+        <!-- Render the sub layout -->
+        {{{body}}}
+      </main>
+      <footer>
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
+      </footer>
+    </div>
+
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
 
 </html>
