@@ -7,42 +7,35 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 
-  <body class="bg-slate-100">
-    <div class="flex-column justify-space-around">
-      <header class="flex justify-between items-center p-5 bg-slate-200">
-        <h1>
-          <a class="text-4xl font-bold" href="/">Blog Site</a>
-        </h1>
-        <nav>
-          <!-- Conditionally render login or logout links -->
-          {{#if logged_in}}
-            <a
-              class="border border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800"
-              href="/profile"
-            >profile</a>
-            |
-            <button
-              class="border border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800"
-              id="logout"
-            >logout</button>
-          {{else}}
-            <a
-              class="border border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800"
-              href="/login"
-            >login</a>
-          {{/if}}
-        </nav>
-      </header>
-      <main class="w-8/12 mt-5 mx-auto">
-        <!-- Render the sub layout -->
-        {{{body}}}
-      </main>
-      <footer>
-
-      </footer>
-    </div>
-
-    <!-- Render script for logged in users only -->
+  <body class="bg-slate-100 text-slate-800">
+    <header
+      class="flex justify-between items-center p-8 bg-slate-200 drop-shadow-sm border-b-4 border-b-slate-600"
+    >
+      <h1 class="transition-all duration-200 transform hover:scale-105">
+        <a class="text-5xl font-bold" href="/">Blog Site</a>
+      </h1>
+      <nav class="flex flex-row items-center gap-2">
+        {{#if logged_in}}
+          <button
+            class="border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
+          >
+            <a href="/profile">Profile</a>
+          </button>|
+          <button
+            class="border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
+            id="logout"
+          >Logout</button>
+        {{else}}
+          <a
+            class="border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
+            href="/login"
+          >Login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="w-11/12 mt-5 mx-auto max-w-5xl">
+      {{{body}}}
+    </main>
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
     {{/if}}
