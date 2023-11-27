@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { Blog } = require('../../models');
-const withAuth = require('../../utils/auth');
+const router = require("express").Router();
+const { Blog, Comment } = require("../../models");
+const withAuth = require("../../utils/auth");
 
-router.post('/', withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({
       ...req.body,
@@ -15,7 +15,23 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.post("/:id", async (req, res) => {
+  try {
+    const newComment = await Comment.create({
+      ...req.body,
+      user_id: req.session.user_id,
+      blog_id: req.params.id,
+    });
+
+    console.log(newComment);
+
+    res.status(200).json(newComment);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({
       where: {
@@ -25,7 +41,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!blogData) {
-      res.status(404).json({ message: 'No project found with this id!' });
+      res.status(404).json({ message: "No blog found with this id!" });
       return;
     }
 

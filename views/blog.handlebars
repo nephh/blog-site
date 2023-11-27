@@ -1,13 +1,71 @@
-<div class="text-center">
-  <h2>{{username}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{content}}</p>
-  <p>Created by {{user.username}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    needed
-  </p>
-  <p>
-    <button class="btn btn-primary">Fund this Project!</button>
-  </p>
+<div class="">
+  <div
+    class="text-center rounded-md border-4 p-4 drop-shadow-md bg-slate-200 border-slate-500"
+  >
+    <h2 class="text-2xl font-bold">{{title}}</h2>
+    <p class="text-sm">Created by
+      <strong>{{user.username}}</strong>
+      on
+      {{format_date date_created}}</p>
+    <p class="mt-4 font-semibold">{{content}}</p>
+  </div>
+  <div class="mt-5">
+    <h3 class="text-center font-bold text-xl mb-1">Leave a Comment!</h3>
+    {{#if logged_in}}
+      <form class="form newCommentForm mb-4" data-id="{{id}}">
+
+        <div class="flex items-center gap-2 justify-center">
+          <textarea
+            class="w-6/12 h-24 p-2 my-2 bg-slate-0 rounded-md border-2 focus:outline-none"
+            id="comment"
+            name="comment"
+          ></textarea>
+        </div>
+        <div class="flex justify-center items-center">
+          <button
+            type="submit"
+            class="mt-2 border border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
+          >Leave Comment</button>
+        </div>
+      </form>
+    {{else}}
+      <p class="m-4 text-center font-semibold">You must be logged in to leave a
+        comment</p>
+    {{/if}}
+    {{#if comments.length}}
+    <div class="commentList">
+    <h3 class="mb-4 text-lg font-semibold text-slate-900">Recent Comments: </h3>
+    {{#each comments as |comment|}}
+      <div class="my-3">
+        <div
+          class="flex border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed"
+        >
+          <div class="flex-1">
+            <strong class="text-xl">
+              {{comment.user.username}}
+            </strong>
+            <span class="ml-1 text-xs text-slate-400">{{format_date
+                comment.date_created
+              }}</span>
+            <p class="">
+              {{comment.comment}}
+            </p>
+
+          </div>
+          {{!-- {{#if logged_in }}
+          <div class="flex justify-end items-center">
+            <button
+              class="border-2 font-bold text-sm border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
+              data-id="{{comment.id}}"
+            >DELETE</button>
+          </div>
+          {{/if}} --}}
+        </div>
+
+      </div>
+    {{/each}}
+  </div>
+  {{/if}}
 </div>
+
+<script src="../js/comment.js"></script>
