@@ -47,12 +47,18 @@ router.get("/blog/:id", async (req, res) => {
 
     const blog = blogData.get({ plain: true });
     const comments = commentData.map((comment) => comment.get({ plain: true }));
+    const authorComments = comments.map((comment) => {
+      return {
+        userIsAuthor: comment.user_id === req.session.user_id,
+      ...comment
+      }
+    })
 
+    console.log(authorComments)
     res.render("blog", {
       ...blog,
-      comments,
+      comments: authorComments,
       logged_in: req.session.logged_in,
-      current_user: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);

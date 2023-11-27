@@ -39,9 +39,11 @@ const delButtonHandler = async (event) => {
   }
 };
 
-document
-  .querySelector(".newCommentForm")
-  .addEventListener("submit", newFormHandler);
+if (document.querySelector(".newCommentForm")) {
+  document
+    .querySelector(".newCommentForm")
+    .addEventListener("submit", newFormHandler);
+}
 
 if (document.querySelector(".commentList"))
   document
