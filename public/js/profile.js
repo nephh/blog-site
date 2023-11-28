@@ -32,7 +32,7 @@ const delButtonHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/profile");
     } else {
-      alert("Failed to delete project");
+      alert("Failed to delete blog");
     }
   }
 };

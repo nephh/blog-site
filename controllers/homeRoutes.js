@@ -1,10 +1,9 @@
 const router = require("express").Router();
-const { Blog, User } = require("../models");
+const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
     const blogData = await Blog.findAll({
       include: [
         {
@@ -14,10 +13,8 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    // Serialize data so the template can read it
-    const blogs = blogData.map((project) => project.get({ plain: true }));
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
     res.render("homepage", {
       blogs: blogs,
       logged_in: req.session.logged_in,
@@ -30,7 +27,6 @@ router.get("/", async (req, res) => {
 router.get("/blog/:id", async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
-      where: {i: req.session.user_id},
       include: [
         {
           model: User,
@@ -39,28 +35,44 @@ router.get("/blog/:id", async (req, res) => {
       ],
     });
 
+    const commentData = await Comment.findAll({
+      where: {
+        blog_id: req.params.id,
+      },
+      include: {
+        model: User,
+        attributes: ["username"],
+      },
+    });
+
     const blog = blogData.get({ plain: true });
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
+    const authorComments = comments.map((comment) => {
+      return {
+        userIsAuthor: comment.user_id === req.session.user_id,
+        ...comment,
+      };
+    });
 
     res.render("blog", {
       ...blog,
+      comments: authorComments,
       logged_in: req.session.logged_in,
+      isAuthor: blog.user_id === req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Use withAuth middleware to prevent access to route
 router.get("/profile", withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Blog }],
     });
 
     const user = userData.get({ plain: true });
-    console.log(user);
 
     res.render("profile", {
       ...user,
@@ -78,6 +90,10 @@ router.get("/login", (req, res) => {
   }
 
   res.render("login");
+});
+
+router.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
 module.exports = router;

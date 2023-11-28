@@ -1,5 +1,5 @@
 <div class="row">
-    <h2 class="font-bold text-2xl">Welcome, {{username}}!</h2>
+  <h2 class="text-center font-bold text-4xl">Welcome, {{username}}!</h2>
 </div>
 
 <div class="mt-4">
@@ -7,33 +7,52 @@
     <h3 class="text-center font-bold text-xl mb-1">Create a New Blog</h3>
 
     <form class="form newBlogForm">
-      <div class="flex items-center gap-2">
-        <label for="blogTitle">Blog Title:</label>
-        <input class="w-full p-2 my-2 bg-slate-0 rounded-md border-2 focus:outline-none" type="text" id="blogTitle" name="blogTitle" />
+      <div class="flex flex-col items-center gap-2 my-4">
+        <label class="flex-nowrap font-bold" for="blogTitle">Blog Title:</label>
+        <input
+          class="w-full p-2 my-2 bg-slate-0 rounded-md border-2 focus:outline-none"
+          type="text"
+          id="blogTitle"
+          name="blogTitle"
+        />
       </div>
-      <div class="flex items-center gap-2">
-        <label for="blogContent">Content:</label>
-        <textarea class="w-full p-2 my-2 bg-slate-0 rounded-md border-2 focus:outline-none" id="blogContent" name="blogContent"></textarea>
+      <div class="flex flex-col items-center gap-2 mb-4">
+        <label class="font-bold" for="blogContent">Content:</label>
+        <textarea
+          class="w-full h-64 p-2 my-2 bg-slate-0 rounded-md border-2 focus:outline-none"
+          id="blogContent"
+          name="blogContent"
+        ></textarea>
       </div>
       <div class="flex justify-center items-center">
-        <button type="submit" class="mt-2 border border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800">Create New Blog</button>
+        <button
+          type="submit"
+          class="mt-2 border-2 font-bold border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
+        >Create New Blog</button>
       </div>
     </form>
   </div>
 
   {{#if blogs.length}}
-  <div class="col-md-6 blogList">
-    <h3 class="font-bold text-xl mb-3">Current Blogs:</h3>
+    <div class="blogList">
+      <h3 class="text-center font-bold text-xl mb-3">Your Blogs</h3>
 
-    {{#each blogs as |blog|}}
-    <div class="row mb-2">
-      <div class="flex justify-between items-center border border-2 rounded-md p-2 border-slate-600">
-        <h4 class="font-bold text-lg"><a href="/blog/{{blog.id}}">{{blog.title}}</a></h4>
-        <button class="border border-2 font-bold text-sm border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800" data-id="{{blog.id}}">DELETE</button>
-      </div>
+      {{#each blogs as |blog|}}
+        <a href="/blog/{{blog.id}}">
+          <div class="flex justify-center">
+            <div
+              class="flex justify-between items-center border-2 rounded-md p-2 bg-slate-200 border-slate-600 w-6/12 mb-2"
+            >
+              <h4 class="font-bold text-lg">{{blog.title}}</h4>
+              <button
+                class="border-2 font-bold text-sm border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
+                data-id="{{blog.id}}"
+              >DELETE</button>
+            </div>
+          </div>
+        </a>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
   {{/if}}
 </div>
 

@@ -1,0 +1,22 @@
+[
+  {
+    "comment": "Comment Test",
+    "blog_id": 1,
+    "user_id": 1
+  },
+  {
+    "comment": "A comment",
+    "blog_id": 1,
+    "user_id": 2
+  },
+  {
+    "comment": "Comment Testing",
+    "blog_id": 2,
+    "user_id": 1
+  },
+  {
+    "comment": "This is another comment!",
+    "blog_id": 2,
+    "user_id": 3
+  }
+]

@@ -1,19 +1,17 @@
 [
   {
-    "username": "Lernantino",
-    "title": "Music Near Me",
-    "content": "A mobile app that will send you notifications whenever a concert is playing in your area.",
+    "title": "Cool Blog",
+    "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam dolorem illo exercitationem sunt quis, totam rem voluptate soluta facilis sit, blanditiis, quasi porro at laudantium nobis consequatur nam illum ipsam.",
     "date_created": "11/1/23",
     "user_id": 1
   },
   {
-    "username": "Sal",
-    "title": "The Ultimate Tech Quiz",
-    "content": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!"
+    "title": "Awesome Facts",
+    "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam dolorem illo exercitationem sunt quis, totam rem voluptate soluta facilis sit, blanditiis, quasi porro at laudantium nobis consequatur nam illum ipsam.",
+    "date_created": "11/1/23"
   },
   {
-    "username": "Lernantino",
-    "title": "Roll 'Em Up",
-    "content": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes."
+    "title": "A Blog About My Cat",
+    "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam dolorem illo exercitationem sunt quis, totam rem voluptate soluta facilis sit, blanditiis, quasi porro at laudantium nobis consequatur nam illum ipsam."
   }
 ]
