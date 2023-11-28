@@ -1,11 +1,10 @@
-const newFormHandler = async (event) => {
+const newComment = async (event) => {
   event.preventDefault();
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
     const comment = document.querySelector("#comment").value.trim();
 
     if (comment) {
-      console.log(comment);
       const response = await fetch(`/api/blogs/${id}`, {
         method: "POST",
         body: JSON.stringify({ comment }),
@@ -23,11 +22,11 @@ const newFormHandler = async (event) => {
   }
 };
 
-const delButtonHandler = async (event) => {
+const commentDelete = async (event) => {
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
 
-    const response = await fetch(`/api/comment/${id}`, {
+    const response = await fetch(`/api/blogs/comment/${id}`, {
       method: "DELETE",
     });
 
@@ -42,10 +41,10 @@ const delButtonHandler = async (event) => {
 if (document.querySelector(".newCommentForm")) {
   document
     .querySelector(".newCommentForm")
-    .addEventListener("submit", newFormHandler);
+    .addEventListener("submit", newComment);
 }
 
 if (document.querySelector(".commentList"))
   document
     .querySelector(".commentList")
-    .addEventListener("click", delButtonHandler);
+    .addEventListener("click", commentDelete);

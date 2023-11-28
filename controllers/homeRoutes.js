@@ -50,15 +50,15 @@ router.get("/blog/:id", async (req, res) => {
     const authorComments = comments.map((comment) => {
       return {
         userIsAuthor: comment.user_id === req.session.user_id,
-      ...comment
-      }
-    })
+        ...comment,
+      };
+    });
 
-    console.log(authorComments)
     res.render("blog", {
       ...blog,
       comments: authorComments,
       logged_in: req.session.logged_in,
+      isAuthor: blog.user_id === req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -90,6 +90,10 @@ router.get("/login", (req, res) => {
   }
 
   res.render("login");
+});
+
+router.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
 module.exports = router;
