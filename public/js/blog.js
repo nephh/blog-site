@@ -2,10 +2,10 @@ const displayForm = (e) => {
   e.preventDefault();
   const editForm = document.querySelector(".editBlogForm");
 
-  if (editForm.getAttribute("style") === "display: none;") {
-    editForm.setAttribute("style", "display: block;");
+  if (editForm.style.display === "none") {
+    editForm.style.display = "block";
   } else {
-    editForm.setAttribute("style", "display: none;");
+    editForm.style.display = "none";
   }
 };
 
