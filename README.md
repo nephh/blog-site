@@ -1,8 +1,8 @@
-# Company Management Tool (Module 12 Challenge)
+# Blog Site (Module 14 Challenge)
 
 [![License Badge](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A simple CLI tool utilizing mySQL to store and keep track of employee records and info.
+A simple blog site made using handlebars.js, tailwind, express and mySQL.
 
 ## Table of Contents
 
@@ -31,7 +31,9 @@ If you are still interested in running the code locally, follow the instructions
    npm install
    ```
 
-3. Make sure you have mySQL installed on your machine, login to mySQL CLI, and create the database
+3. Make sure you have mySQL installed on your machine, login to mySQL CLI, and create the database. 
+
+    *You need to make sure you either create a **.env** file and match the correct values in **connection.js**, or you can just set your mySQL information in **connection.js** directly.*
 
    ```bash
    mysql -u 'username' -p
@@ -45,7 +47,6 @@ If you are still interested in running the code locally, follow the instructions
    node seed/seeds.js
    ```
 
-4. Make sure you either create a .env file and set the correct values in **connection.js**, or you can just set your mySQL information there directly.
 
 ## Usage
 
