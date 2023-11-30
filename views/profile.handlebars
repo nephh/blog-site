@@ -38,21 +38,19 @@
       <h3 class="text-center font-bold text-xl mb-3">Your Blogs</h3>
 
       {{#each blogs as |blog|}}
-        <a href="/blog/{{blog.id}}">
-          <div class="flex justify-center">
-            <div
-              class="flex justify-between items-center border-2 rounded-md p-2 bg-slate-200 border-slate-600 w-6/12 mb-2"
-            >
-              <h4 class="font-bold text-lg">{{blog.title}}</h4>
-              <a href="/profile">
-                <button
-                  class="border-2 z-20 font-bold text-sm border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
-                  data-id="{{blog.id}}"
-                >DELETE</button>
-              </a>
-            </div>
+        <div class="flex justify-center">
+          <div
+            class="flex justify-between items-center border-2 rounded-md p-2 bg-slate-200 border-slate-600 w-6/12 mb-2"
+          >
+            <a href="/blog/{{blog.id}}">
+              <h4 class="font-bold text-lg transition-all duration-200 transform hover:scale-105">{{blog.title}}</h4>
+            </a>
+            <button
+              class="border-2 font-bold text-sm border-slate-500 rounded-md bg-slate-400 p-2 text-slate-800 transition-all duration-200 transform hover:scale-105"
+              data-id="{{blog.id}}"
+            >DELETE</button>
           </div>
-        </a>
+        </div>
       {{/each}}
     </div>
   {{/if}}
