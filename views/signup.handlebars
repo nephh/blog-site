@@ -1,14 +1,18 @@
-<div class="flex flex-row gap-x-64 justify-center">
-  <div class="flex flex-col w-96">
-    <h2 class="text-4xl font-bold text-center mb-8">Sign Up</h2>
-
+<div class="flex flex-col gap-x-64 items-center">
+  <h2 class="text-4xl font-bold text-center mb-8">Sign Up</h2>
+  <p
+    class="w-128 italic text-red-600 font-semibold mb-8 text-center"
+    id="loginFail"
+    style="display: none;"
+  ></p>
+  <div class="w-96">
     <form class="signup-form">
 
-      <label class="font-bold" for="name-signup">Name:</label>
+      <label class="font-bold" for="username-signup">Username:</label>
       <input
         class="w-full p-2 my-2 bg-slate-0 rounded-md border-2 focus:outline-none"
         type="text"
-        id="name-signup"
+        id="username-signup"
       />
 
       <label class="font-bold" for="email-signup">Email:</label>
