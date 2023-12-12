@@ -60,6 +60,10 @@ Once you have setup the database and
 
 2. Head to http://localhost:3001, create an account and start blogging!
 
+### Screenshot
+
+![screenshot](./assets/screenshot.png)
+
 
 ## Credits
 
